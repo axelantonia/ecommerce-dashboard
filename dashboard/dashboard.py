@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import streamlit as st
+from pathlib import Path
 
 sns.set(style="dark")
 
@@ -117,7 +118,10 @@ def create_delay_cluster_df(df):
   return delay_cluster_df
 
 
-all_df = pd.read_csv("dashboard/main_data.csv")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "dashboard" / "main_data.csv"
+
+all_df = pd.read_csv(DATA_PATH)
 
 datetime_columns = [
     "order_purchase_timestamp",
